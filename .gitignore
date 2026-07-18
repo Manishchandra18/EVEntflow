@@ -1,0 +1,16 @@
+.DS_Store
+.env
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.next/
+dist/
+coverage/
+*.pdf
+*.pptx
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
