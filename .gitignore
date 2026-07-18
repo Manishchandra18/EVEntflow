@@ -9,6 +9,7 @@ dist/
 coverage/
 *.pdf
 *.pptx
+.env.example
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
