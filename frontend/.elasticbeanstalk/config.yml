@@ -1,0 +1,19 @@
+branch-defaults:
+  default:
+    environment: eventflow-web
+environment-defaults:
+  eventflow-prod:
+    branch: null
+    repository: null
+global:
+  application_name: eventflow
+  default_ec2_keyname: eventflow-eb
+  default_platform: Docker running on 64bit Amazon Linux 2023
+  default_region: ap-south-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: null
+  workspace_type: Application
