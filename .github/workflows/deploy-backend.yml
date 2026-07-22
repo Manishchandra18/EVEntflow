@@ -1,11 +1,21 @@
-name: Backend Deployment
+name: Deploy Backend
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+
   workflow_dispatch:
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
 
     steps:
       - name: Checkout Repository
@@ -16,10 +26,20 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ap-south-1
 
-      - name: Verify AWS Identity
-        run: aws sts get-caller-identity
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      - name: List Elastic Beanstalk Environments
-        run: aws elasticbeanstalk describe-environments
+      - name: Install EB CLI
+        run: |
+          python -m pip install --upgrade pip
+          pip install awsebcli
+
+      - name: Check EB CLI
+        run: eb status
+
+      - name: Deploy Backend
+        run: eb deploy eventflow-prod
