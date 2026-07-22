@@ -42,4 +42,5 @@ jobs:
         run: eb status
 
       - name: Deploy Backend
-        run: eb deploy eventflow-prod
+        run: |
+    eb deploy eventflow-prod --verbose
