@@ -20,3 +20,6 @@ jobs:
 
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
+
+      - name: List Elastic Beanstalk Environments
+        run: aws elasticbeanstalk describe-environments
